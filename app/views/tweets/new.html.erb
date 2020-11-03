@@ -1,0 +1,23 @@
+<h1>Tweet</h1>
+
+<% if @tweet.errors.present? %>
+<font color="red">
+    <h3>エラーがあります</h3>
+    <ul>
+        <% @tweet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    <ul>
+    </font>
+<% end %> 
+
+<%= form_for @tweet, url: {action: :create} do |f|%>
+<p>
+    <%= f.label :message, 'つぶやく' %>
+    <%= f.text_field :message %>
+</p>
+
+<p><%= f.submit 'ツイート' %></p>
+
+<% end %>
+
